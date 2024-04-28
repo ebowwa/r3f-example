@@ -43,3 +43,20 @@ declare module '@studio-freight/lenis' {
 
     export default Lenis;
 }
+
+declare module 'serwist' {
+    export class Serwist {
+        constructor(options: SerwistOptions);
+        addEventListeners(): void;
+    }
+
+    export interface SerwistOptions {
+        precacheEntries: any[];
+        skipWaiting: boolean;
+        clientsClaim: boolean;
+        navigationPreload: boolean;
+        runtimeCaching: any;
+    }
+    export const defaultCache: any;
+}
+

@@ -1,16 +1,19 @@
 // app/layout.tsx
-import { Layout } from '@/components/dom/Layout'
-import Head from './head'
-import '@/styles/global.css'
+import { Layout } from '@/components/dom/Layout';
+import Head from './head';
+import '@/styles/global.css';
 
 export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
-}
+  title: 'Ebowwa',
+  description: 'what is the difference between digital and physical?',
+};
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Register the Serwist service worker
+  registerWebWorker('/public/serwist.worker.ts');
+
   return (
-    <html lang='en' className='antialiased'>
+    <html lang="en" className="antialiased">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
@@ -21,5 +24,14 @@ export default function RootLayout({ children }) {
         <Layout>{children}</Layout>
       </body>
     </html>
-  )
+  );
+}
+
+// Register the Serwist service worker
+function registerWebWorker(url: string) {
+  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.register(url).catch((error) => {
+      console.error('Error registering service worker:', error);
+    });
+  }
 }

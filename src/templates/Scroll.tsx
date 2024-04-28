@@ -1,4 +1,4 @@
-// https://github.com/studio-freight/lenis
+// https://github.com/spartanbits/lenis-js
 // TODO refactor for app-directory
 // See https://github.com/pmndrs/react-three-next/pull/123
 
@@ -34,18 +34,18 @@ export default function Scroll({ children }) {
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
-    })
+    });
 
-    lenis.on('scroll', ({ scroll, progress }) => {
-      state.top = scroll
-      state.progress = progress
-    })
-    const effectSub = addEffect((time) => lenis.raf(time))
+    lenis.on('scroll', (data: { scroll: number; limit: number; velocity: number; direction: number }) => {
+      state.top = data.scroll;
+      state.progress = data.scroll / data.limit;
+    });
+    const effectSub = addEffect((time) => lenis.raf(time));
     return () => {
-      effectSub()
-      lenis.destroy()
-    }
-  }, [])
+      effectSub();
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <div

@@ -1,3 +1,4 @@
+// src/app/blob/page.tsx
 'use client'
 
 import dynamic from 'next/dynamic'

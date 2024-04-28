@@ -1,5 +1,7 @@
+// app/layout.tsx
 import { Layout } from '@/components/dom/Layout'
-import '@/global.css'
+import Head from './head'
+import '@/styles/global.css'
 
 export const metadata = {
   title: 'Next.js + Three.js',

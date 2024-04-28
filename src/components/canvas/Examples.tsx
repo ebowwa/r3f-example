@@ -1,3 +1,4 @@
+// src/components/canvas/Examples.tsx
 'use client'
 
 import { useGLTF } from '@react-three/drei'

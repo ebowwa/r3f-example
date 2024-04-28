@@ -1,3 +1,4 @@
+// src/components/dom/Layout.tsx
 'use client'
 
 import { useRef } from 'react'

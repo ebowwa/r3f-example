@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { useGeolocation } from '@/components/utility/location/useGeolocation';
+import { useGeolocation } from './useGeolocation';
 
 const LocationDisplayComponent = () => {
   const { latitude, longitude, error } = useGeolocation();

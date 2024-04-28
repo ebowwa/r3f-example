@@ -2,7 +2,12 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { GeolocationState } from '@/types/index';
+
+export interface GeolocationState {
+  latitude: number | null;
+  longitude: number | null;
+  error: string | null;
+}
 
 export const useGeolocation = (): GeolocationState => {
   const [location, setLocation] = useState<GeolocationState>({

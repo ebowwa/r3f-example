@@ -1,3 +1,4 @@
+// app/config/store.ts
 import create from 'zustand';
 import { Config, LightingConfig, SceneObjects, ControlsLimits } from '../types';
 import { get, set } from 'lodash';

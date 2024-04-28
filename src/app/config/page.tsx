@@ -67,7 +67,7 @@ const DynamicThreeJSConfig = dynamic(
     }
 );
 
-export default function DashboardPage() {
+const DashboardPage = React.memo(function DashboardPage() {
     const threeJSConfig = useThreeJSStore((state) => state.threeJSConfig);
     const threeJSLightingConfig = useThreeJSStore((state) => state.threeJSLightingConfig);
     const threeJSSceneConfig = useThreeJSStore((state) => state.threeJSSceneConfig);
@@ -86,4 +86,8 @@ export default function DashboardPage() {
             </Suspense>
         </div>
     );
-}
+});
+
+DashboardPage.displayName = 'DashboardPage';
+
+export default DashboardPage;

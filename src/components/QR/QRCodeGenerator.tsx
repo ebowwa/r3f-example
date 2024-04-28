@@ -1,5 +1,6 @@
 // src/components/utility/QR/QRCodeGenerator.tsx
-import React, { useState, useEffect, useCallback } from 'react';
+"use client"
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import QRCode, { QRCodeToDataURLOptions } from 'qrcode';
 
 interface QRCodeGeneratorProps {
@@ -70,6 +71,8 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
     generateQRCode();
   }, [generateQRCode]);
 
+  const cachedQRCodeData = useMemo(() => qrCodeData, [qrCodeData]);
+
   if (isLoading) {
     return <p>Loading QR code...</p>;
   }
@@ -78,7 +81,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
     return <p>Error generating QR code: {error.message}</p>;
   }
 
-  return <img src={qrCodeData} alt="QR Code" width={size} height={size} />;
+  return <img src={cachedQRCodeData} alt="QR Code" width={size} height={size} />;
 };
 
 export default QRCodeGenerator;

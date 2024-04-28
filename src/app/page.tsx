@@ -1,12 +1,16 @@
-"use client"
+// app/page.tsx
+
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { ThreeJSStore } from './store';
 import { useRouter } from 'next/navigation';
+import { useViewportSize } from '@/components/viewport/useViewportSize';
 
 export default function ThreeJSPage() {
     const threeJSStore = useRef<ThreeJSStore | null>(null);
     const [isBrowser, setIsBrowser] = useState(false);
     const router = useRouter();
+    const { width, height } = useViewportSize();
 
     useEffect(() => {
         setIsBrowser(true);
@@ -22,7 +26,7 @@ export default function ThreeJSPage() {
                 threeJSStore.current.renderer.dispose();
             }
         };
-    }, [router]);
+    }, [router, width, height]);
 
     return (
         <div ref={(el) => {
